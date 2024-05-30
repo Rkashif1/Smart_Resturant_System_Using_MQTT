@@ -15,7 +15,6 @@ int count = 0;
 void SendMessage(int Topicval, const char* topic) {
   // call poll() regularly to allow the library to send MQTT keep alive which
   // avoids being disconnected by the broker
-  mqttClient.poll();
 
   const long interval = 1000;
   unsigned long previousMillis = 0;

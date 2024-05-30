@@ -12,10 +12,9 @@ const uint8_t LED_STATE_RED = 0;
 const uint8_t LED_STATE_GREEN = 1;
 
 
-void CustomerPing()
+void CustomerPing(uint8_t State)
 {
     uint8_t Press; // Temporary variable
-    uint8_t State; // Variable for LED state
     
     Press = digitalRead(Button); // The current signal at the sensor is read out
   
