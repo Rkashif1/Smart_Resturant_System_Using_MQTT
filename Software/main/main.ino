@@ -26,7 +26,7 @@ void loop() {
 
   //CustomerPing(State);
 
-  Topicval = 325;
+  Topicval = State;
   
   SendMessage(Topicval, topic); // int Topicval, topic, Topicval is of type int, sends that numerical value.
 

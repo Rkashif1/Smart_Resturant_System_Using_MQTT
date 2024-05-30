@@ -12,7 +12,7 @@ const uint8_t LED_STATE_RED = 0;
 const uint8_t LED_STATE_GREEN = 1;
 
 
-void CustomerPing(uint8_t State)
+uint8_t CustomerPing(uint8_t State)
 {
     uint8_t Press; // Temporary variable
     
