@@ -38,6 +38,28 @@ void SendMessage(int Topicval, const char* topic) {
   }
 }
 
+void SendMessageString(const char* Topicval, const char* topic) {
+  const long interval = 1000;
+  unsigned long previousMillis = 0;
+
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+    Serial.print("Sending message to topic: ");
+    Serial.println(topic);
+    Serial.println(Topicval);
+
+    mqttClient.beginMessage(topic);
+    mqttClient.print(Topicval);
+    mqttClient.endMessage();
+
+    Serial.println();
+  }
+}
+
+
 void EstablishConnection(char* ssid, char* pass, char* broker, int port)
 {
     // attempt to connect to Wifi network:
