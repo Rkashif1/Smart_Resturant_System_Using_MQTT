@@ -38,7 +38,7 @@ void SendMessage(int Topicval, const char* topic) {
   }
 }
 
-void SendMessageString(const char* Topicval, const char* topic) {
+void SendMessageString(String Topicval, const char* topic) {
   const long interval = 1000;
   unsigned long previousMillis = 0;
 
@@ -89,5 +89,20 @@ void EstablishConnection(char* ssid, char* pass, char* broker, int port)
 
 }
 
+void onMqttMessage(int messageSize) {
+  // we received a message, print out the topic and contents
+  Serial.println("Received a message with topic '");
+  Serial.print(mqttClient.messageTopic());
+  Serial.print("', length ");
+  Serial.print(messageSize);
+  Serial.println(" bytes:");
+
+  // use the Stream interface to print the contents
+  while (mqttClient.available()) {
+    Serial.print((char)mqttClient.read());
+  }
+  Serial.println();
+  Serial.println();
+}
 
 #endif

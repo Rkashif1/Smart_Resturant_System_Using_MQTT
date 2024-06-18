@@ -5,7 +5,6 @@
 #include <Key.h>
 #include <Keypad.h>
 
-
 uint8_t Button = 13;
 uint8_t Led_Red = 12;
 uint8_t Led_Green = 11;
@@ -19,6 +18,7 @@ const uint8_t LED_STATE_GREEN = 1;
 void SensorInt()
 {
   pinMode (Button, INPUT);
+  digitalWrite(Button, HIGH);
   pinMode (Led_Red, OUTPUT); 
   pinMode (Led_Green, OUTPUT);
   pinMode (Led_Blue, OUTPUT);

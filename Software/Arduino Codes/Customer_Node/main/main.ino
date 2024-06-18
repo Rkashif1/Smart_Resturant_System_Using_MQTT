@@ -19,6 +19,8 @@ void setup() {
 
   EstablishConnection(ssid, pass, broker, port);                  // ssid, pass, broker, port
   SensorInt();
+  pinMode(2, OUTPUT);
+  digitalWrite(2, HIGH);
 }
 
 void loop() {
@@ -29,26 +31,22 @@ void loop() {
   
   if (CustomerState == 1)                                         // Checks if the customer has pressed the button, where the value of 1 is returned if the LED is green. Green meaning customer requested assistance.
     {
-      const char* button_msg = "Customer requested assistance.";
+      String button_msg = "Customer requested assistance.";
       SendMessageString(button_msg, topic);
-      const char* button_rsp = "Help is on the way, give us just a moment.";
+      String button_rsp = "Help is on the way, give us just a moment.";
       SendMessageString(button_rsp, topic2);
     }
-  else 
-    {
-      const char* button_default = "Button not pressed. Customer did not request assistance.";
-      SendMessageString(button_default, topic);
-    } 
     
+  printf("Line of Code is running");
 
 
-
-  String OrderState = Order();                                     // Order Function running in loop to detect and store a String if the function returns a string.
+  String OrderState = Order();                                     // Order(); Function running in loop to detect and store a String OrderState if Order(); returns a string.
 
   if (OrderState != "")                                            // Checks if order has been placed, the condition is that if the string is NOT empty, then execute the if code. Else return a no order placed.
     {                                                              // OrderState is a string, however SendMessageString only accepts a character array, which .c_str is used for, to convert that string into a char array.        
       String order_msg = "Customer has ordered " + OrderState;     // Strings can be concatenated together, just like in C++.
-      SendMessageString(order_msg.c_str(), topic3); 
+      SendMessageString(order_msg, topic3);
+      
 
       String order_rsp;                                            // If condition to handle invalid response on the Keypad. Arduino allows direct checking of strings.
       if (OrderState == "Invalid selection") 
@@ -60,14 +58,7 @@ void loop() {
         order_rsp = "You have ordered " + OrderState + ", thank you for placing your order!!";
       }
 
-      SendMessageString(order_rsp.c_str(), topic4);
-    }
-
-
-  else 
-    {
-      const char* order_default = "Order has not been placed yet.";
-      SendMessageString(order_default, topic3);
+      SendMessageString(order_rsp, topic4);
     }
 
 }
