@@ -38,7 +38,7 @@ void SendMessage(int Topicval, const char* topic) {
   }
 }
 
-void SendMessageString(String Topicval, const char* topic) {
+void SendMessageString(const char* Topicval, const char* topic) {
   const long interval = 1000;
   unsigned long previousMillis = 0;
 
