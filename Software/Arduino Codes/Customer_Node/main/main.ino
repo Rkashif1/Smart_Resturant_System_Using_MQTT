@@ -18,7 +18,7 @@ void setup() {
   Serial.begin(9600);
 
   EstablishConnection(ssid, pass, broker, port);                  // ssid, pass, broker, port
-
+  SensorInt();
 }
 
 void loop() {

@@ -16,6 +16,14 @@ uint8_t Led_Blue = 10;
 const uint8_t LED_STATE_RED = 0;
 const uint8_t LED_STATE_GREEN = 1;
 
+void SensorInt()
+{
+  pinMode (Button, INPUT);
+  pinMode (Led_Red, OUTPUT); 
+  pinMode (Led_Green, OUTPUT);
+  pinMode (Led_Blue, OUTPUT);
+}
+
 
 uint8_t CustomerPing()
 {
