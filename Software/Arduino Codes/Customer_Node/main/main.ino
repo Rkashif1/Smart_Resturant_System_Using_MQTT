@@ -7,9 +7,9 @@ char pass[] = "JoJopart5";                                       // your network
 
 const char broker[] = "test.mosquitto.org";                      
 int        port     = 1883;
-const char topic[]  = "BUTTON_STATUS";                           // Sent to backend subscriber, checking for request of human assistance.
+const char topic[]  = "BUTTON_STATUS";                           // Sent to chef subscriber, checking for request of human assistance.
 const char topic2[]  = "BUTTON_RESPONSE";                        // Sent to customer subscriber, acknowledge response showcased to customer.
-const char topic3[]  = "ORDER_STATUS";                           // Sent to backend subscriber, checking for if order is placed.
+const char topic3[]  = "ORDER_STATUS";                           // Sent to chef subscriber, checking for if order is placed.
 const char topic4[]  = "ORDER_RESPONSE";                         // Sent to customer subscriber, acknowledging that their order is placed or is invalid.
 
 
@@ -44,7 +44,7 @@ void loop() {
  if (OrderState != NULL && OrderState[0] != '\0')                       // Checks if order has been placed, the condition is that if the string is NOT empty, then execute the if code. Else return a no order placed.
     {                                                                   // SendMessageString can only send const char* instead of Strings, In order to concatenate it with " Customer has ordered ", we do conversions.       
       String order_msg_str = "Customer has ordered " + String(OrderState);
-      const char* order_msg = order_msg_str.c_str();                            // Strings can be concatenated together, just like in C++.
+      const char* order_msg = order_msg_str.c_str();                    // Strings can be concatenated together, just like in C++.
       SendMessageString(order_msg, topic3);
       
 
